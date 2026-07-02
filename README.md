@@ -1,161 +1,117 @@
-# Smart Parking System 🚗💨
+# 🅿️ Smart Parking System
 
-A comprehensive, full-stack **MERN (MongoDB, Express, React, Node.js)** web application for real-time parking space monitoring, reservation management, slot allocation, and secure payment processing. 
-
-Designed with a sleek, responsive user interface and robust role-based routing, this platform caters to both everyday commuters (Users) and parking facility managers (Admins).
+A comprehensive, modern full-stack web application designed to manage, track, and book parking slots in real time. It features a responsive React-based frontend with an elegant glassmorphism UI, interactive multi-floor parking map selection, secure mock payments, and a fully featured Admin Dashboard.
 
 ---
 
-## 🌟 Key Features
+## 🚀 Key Features
 
-### 👤 User Capabilities
-- **Live Occupancy Dashboard**: Visually rich dashboard displaying real-time availability of parking spots across multiple floors (Ground, First, Second, etc.).
-- **Interactive Floor Map**: Detailed visual parking map detailing slot layouts. Colors change dynamically based on slot status:
-  - 🟢 **Available**
-  - 🔴 **Occupied** (Currently in use)
-  - 🟡 **Reserved** (Booked, awaiting vehicle arrival)
-- **Seamless Slot Reservation**: Request bookings by inputting vehicle numbers, selecting the floor, and picking specific slots.
-- **Dynamic Checkouts & Receipts**: Automatically calculates the parking fee based on the elapsed duration at exit.
-- **Simulation of Payments**: Integrated secure payment interface enabling credit card, UPI, net banking, or debit card transactions.
-- **My Bookings History**: Overview of personal current and historical bookings with receipts that can be printed or saved.
-
-### 🔑 Admin Management
-- **Dashboard Metrics**: Analytical cards tracking:
-  - 💰 Total System Revenue
-  - 🚗 Total Parking Slots
-  - 📊 Real-time Occupancy Percentage
-  - 👥 Total Registered Users
-- **Global Bookings Registry**: Complete log of all transactions and active parking bookings.
-- **Live Slot Editor**: Ability to dynamically add new parking spots or delete existing ones directly from the admin interface.
-- **Active Booking Interventions**: Force-cancel bookings or manually release occupied/reserved spots if needed.
+*   🔐 **Secure Authentication**: JWT-based registration and login with roles (`user` & `admin`).
+*   🗺️ **Interactive Parking Map**: Real-time visualization of slot status (Available vs Occupied) across **Ground Floor**, **First Floor**, and **Second Floor**.
+*   ⚡ **Instant Booking**: Real-time slot reservation with auto-calculated rates.
+*   💳 **Secure Mock Payment Gateway**: Integrated simulated payment system supporting Card and UPI transactions.
+*   📄 **Booking Receipts**: Instant invoice generation with check-in timestamps, pricing breakdown, and transaction IDs.
+*   📊 **Admin Dashboard**:
+    *   Full administrative dashboard showing database statistics (total active bookings, available slots).
+    *   Modify slot status, add slots, reset occupancy, and adjust pricing.
+    *   View all transactions and historical booking records.
 
 ---
 
-## 🛠️ Tech Stack
+## 🛠️ Technology Stack
 
-- **Frontend**: 
-  - [React (v19)](https://react.dev/) & [Vite](https://vite.dev/)
-  - [React Router DOM (v7)](https://reactrouter.com/) for SPA routing
-  - [Axios](https://axios-http.com/) for backend HTTP communication
-  - [Lucide React](https://lucide.dev/) for modern icons
-  - Vanilla CSS for styling and custom animations
-- **Backend**: 
-  - [Node.js](https://nodejs.org/) & [Express.js](https://expressjs.com/)
-  - [JSON Web Tokens (JWT)](https://jwt.io/) & [Bcrypt.js](https://github.com/dcodeIO/bcrypt.js) for secure authentication
-- **Database**: 
-  - [MongoDB](https://www.mongodb.com/) via [Mongoose ODM](https://mongoosejs.com/)
+### Frontend
+*   **Framework**: [React](https://react.dev/) (bootstrapped with [Vite](https://vite.dev/))
+*   **Routing**: [React Router DOM](https://reactrouter.com/) (v7)
+*   **Styling**: Glassmorphism using Custom CSS / Theme Variables
+*   **Icons**: [Lucide React](https://lucide.dev/)
+*   **HTTP Client**: [Axios](https://axios-http.com/)
+
+### Backend
+*   **Runtime**: [Node.js](https://nodejs.org/)
+*   **Framework**: [Express.js](https://expressjs.com/)
+*   **Database**: [MongoDB](https://www.mongodb.com/) (using [Mongoose ODM](https://mongoosejs.com/))
+*   **Authentication**: JSON Web Tokens (JWT) & `bcryptjs` password hashing
 
 ---
 
-## 📂 Project Directory Structure
+## 📁 Project Structure
 
-```
+```text
 Smart_Parking/
-├── backend/
-│   ├── controllers/      # Route controllers (auth, booking, admin, slot)
-│   ├── middleware/       # Authentication guards and error handlers
-│   ├── models/           # Mongoose schemas (User, Slot, Booking)
-│   ├── routes/           # Express API endpoints
-│   ├── seeder.js         # Initial database seeder script
-│   ├── server.js         # App entrypoint & DB connection config
-│   └── package.json
-└── frontend/
-    ├── src/
-    │   ├── components/   # Shared UI components (Navbar, ParkingMap, Modals)
-    │   ├── context/      # React Auth Context state management
-    │   ├── pages/        # Main route views (Dashboard, Admin, Payment, etc.)
-    │   ├── App.jsx       # Route registration
-    │   └── main.jsx      # React DOM entrypoint
-    └── package.json
+├── backend/                  # Node/Express API Server
+│   ├── controllers/          # API Route controllers
+│   ├── middleware/           # JWT verification & authorization
+│   ├── models/               # MongoDB / Mongoose models (User, Slot, Booking)
+│   ├── routes/               # Express API endpoints
+│   ├── server.js             # Entry point of the Express server
+│   ├── seeder.js             # Database seeding script (A1-A10, B1-B10 slots + test users)
+│   └── add_second_floor.js   # Script to append second floor slots (S1-S10)
+│
+├── frontend/                 # React Single Page Application (SPA)
+│   ├── src/
+│   │   ├── components/       # Reusable components (Navbar, ParkingMap, Modals, etc.)
+│   │   ├── context/          # React AuthContext for state preservation
+│   │   ├── pages/            # View pages (Home, Login, Dashboard, Payment, Admin)
+│   │   ├── App.jsx           # Main Router configuration
+│   │   └── index.css         # Styling system & dark theme variables
+│   └── vite.config.js        # Vite configuration
+└── README.md                 # Project documentation
 ```
 
 ---
 
-## 🚀 Getting Started
+## ⚙️ Installation & Setup
 
-### 📋 Prerequisites
-Make sure you have the following installed on your system:
-- **Node.js** (v18 or higher recommended)
-- **MongoDB Local Community Server** (running on port `27017`) or a **MongoDB Atlas Cluster**.
+### Prerequisites
+*   [Node.js](https://nodejs.org/) installed (v18+)
+*   [MongoDB](https://www.mongodb.com/) server running locally (default: `mongodb://localhost:27017`)
 
----
-
-### 🔧 1. Backend Setup & Configuration
-
-1. Navigate to the backend directory:
+### 1. Backend Setup
+1. Navigate to the `backend` directory:
    ```bash
    cd backend
    ```
-
 2. Install dependencies:
    ```bash
    npm install
    ```
-
-3. Create a `.env` file in the root of the `/backend` folder and populate it with your environment variables:
-   ```env
-   PORT=5000
-   MONGO_URI=mongodb://localhost:27017/Smart_parking
-   JWT_SECRET=your_jwt_secret_key_here
-   ```
-
-4. Seed the database with mock parking slots and admin/user accounts:
+3. Seed the database to create default slots and test accounts:
    ```bash
    node seeder.js
+   node add_second_floor.js
    ```
-   *Note: This deletes any existing users/slots in the DB and populates 10 slots for the Ground Floor (A1-A10) and 10 slots for the First Floor (B1-B10).*
-
-5. Start the backend server in development mode:
+4. Start the backend development server:
    ```bash
    npm run dev
    ```
-   The backend server should start running at `http://localhost:5000`.
+   *The server will start running on [http://localhost:5000](http://localhost:5000).*
 
----
-
-### 🎨 2. Frontend Setup & Configuration
-
-1. Navigate to the frontend directory:
+### 2. Frontend Setup
+1. Open a new terminal and navigate to the `frontend` directory:
    ```bash
-   cd ../frontend
+   cd frontend
    ```
-
 2. Install dependencies:
    ```bash
    npm install
    ```
-
 3. Start the Vite development server:
    ```bash
    npm run dev
    ```
-   Open your browser and navigate to `http://localhost:5173`.
+   *The application will open on [http://localhost:5173](http://localhost:5173).*
 
 ---
 
-## 🔑 Default Credentials
+## 🔑 Test Credentials
 
-After running `node seeder.js`, you can test the system immediately with the following accounts:
+Use these seeded credentials to test the features of the application immediately:
 
-### 👤 Regular User
-- **Email**: `user1@park.com`
-- **Password**: `user123`
+### 👤 User Account (Standard Booker)
+*   **Email**: `user1@park.com`
+*   **Password**: `user123`
 
-### 🛡️ System Admin
-- **Email**: `admin@park.com`
-- **Password**: `admin123`
-
----
-
-## ⚡ Development & Maintenance Scripts
-
-Inside `/backend`, you will find several helper scripts useful for development tasks:
-- `node seeder.js` – Wipes databases and inserts default user, admin, and Ground/First floor spots.
-- `node add_first_floor.js` / `node add_second_floor.js` – Manually registers more slots to specific floors.
-- `node reset_slots.js` – Resets status of all slots to `available` and cleans active bookings.
-- `node update_prices.js` – Adjusts default parking rates globally.
-
----
-
-## 📄 License
-This project is licensed under the MIT License. See [LICENSE](file:///d:/Smart_Parking/LICENSE) for more details.
+### 🛡️ Admin Account (Dashboard Controller)
+*   **Email**: `admin@park.com`
+*   **Password**: `admin123`
